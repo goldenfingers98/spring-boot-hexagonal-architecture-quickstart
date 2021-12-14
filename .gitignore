@@ -1,0 +1,9 @@
+# build files
+*/target
+*/*/target
+
+# vs code
+.vscode
+
+# generated code by annotation processors
+infrastructure/adapter-persistence-postgresql/.apt_generated
