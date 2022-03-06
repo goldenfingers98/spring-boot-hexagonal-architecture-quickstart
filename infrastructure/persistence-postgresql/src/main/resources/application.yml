@@ -1,0 +1,20 @@
+spring:
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    username: paymentapp
+    url: jdbc:postgresql://localhost:5432/paymentapp_parties
+    password: paymentapp123
+  jpa:
+    generate-ddl: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        jdbc:
+          lob:
+            "[non_contextual_creation]": true
+    database: default
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+server:
+  port: '8080'
