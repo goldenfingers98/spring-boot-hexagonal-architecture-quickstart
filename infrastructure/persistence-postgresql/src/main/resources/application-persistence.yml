@@ -1,9 +1,9 @@
 spring:
   datasource:
     driver-class-name: org.postgresql.Driver
-    username: paymentapp
-    url: jdbc:postgresql://localhost:5432/paymentapp_parties
-    password: paymentapp123
+    username: user
+    url: jdbc:postgresql://localhost:5432/demo
+    password: user
   jpa:
     generate-ddl: true
     properties:
@@ -16,8 +16,4 @@ spring:
     show-sql: true
     hibernate:
       ddl-auto: update
-server:
-  port: '8080'
-  error:
-    include-stacktrace: never
-    include-message: always
+    open-in-view: true
