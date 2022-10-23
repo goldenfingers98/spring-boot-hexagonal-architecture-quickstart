@@ -1,0 +1,4 @@
+FROM bellsoft/liberica-openjdk-alpine:11.0.15
+COPY ./ms-bootloader/target/ms-bootloader-1.0-SNAPSHOT.jar /opt/ms-bootloader.jar
+EXPOSE 8080 5000
+ENTRYPOINT ["java", "-agentlib:jdwp=transport=dt_socket,address=0.0.0.0:5000,server=y,suspend=n", "-jar", "/opt/ms-bootloader.jar"]

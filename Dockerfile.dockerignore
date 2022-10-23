@@ -1,0 +1,11 @@
+**/target
+.idea
+.vscode
+.gitignore
+.git
+bootstrapTestPG.sh
+README.md
+Dockerfile
+Dockerfile.dev
+docker-compose.yml
+docker-compose-dev.yml
