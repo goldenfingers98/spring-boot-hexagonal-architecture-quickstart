@@ -1,0 +1,29 @@
+version: '3.1'
+
+services:
+  app:
+    container_name: auth-service
+    image: auth_service:latest
+    build: 
+      context: ./
+      dockerfile: Dockerfile.dev
+    ports:
+      - 8080:8080
+      - 5000:5000
+    depends_on:
+      - postgresqldb
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgresqldb:5432/demo
+      - SPRING_DATASOURCE_USERNAME=user
+      - SPRING_DATASOURCE_PASSWORD=user
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+
+  postgresqldb:
+    image: 'postgres:13.1-alpine'
+    container_name: auth-service-db
+    environment:
+      - POSTGRES_DB=demo
+      - POSTGRES_USER=user
+      - POSTGRES_PASSWORD=user
+    ports:
+      - 5432:5432
