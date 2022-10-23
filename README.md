@@ -1,6 +1,8 @@
 # SPRING BOOT HEXAGONAL ARCHITECTURE QUICK START
 
-## <img src="./hexagonal_architecture.png" style="zoom: 67%;" /><br>Description
+<img src="./hexagonal_architecture.png" style="zoom: 67%;" />
+
+## Description
 
 This repository contains the code of an example hexagonal architecture based spring boot project.<br>This quick start consists of adding a simple user in a database with a specific validation.
 
