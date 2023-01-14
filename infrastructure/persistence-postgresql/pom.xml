@@ -4,7 +4,7 @@
 
     <parent>
         <artifactId>infrastructure</artifactId>
-        <groupId>tn.ksoftwares</groupId>
+        <groupId>tn.ksoftwares.auth</groupId>
         <version>1.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
@@ -13,7 +13,7 @@
 
     <dependencies>
         <dependency>
-            <groupId>tn.ksoftwares</groupId>
+            <groupId>tn.ksoftwares.auth</groupId>
             <artifactId>logic</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
