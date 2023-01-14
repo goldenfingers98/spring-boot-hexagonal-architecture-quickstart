@@ -14,7 +14,7 @@
     <dependencies>
         <dependency>
             <groupId>tn.ksoftwares</groupId>
-            <artifactId>domain</artifactId>
+            <artifactId>logic</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
         <dependency>

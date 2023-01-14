@@ -13,7 +13,7 @@ import tn.ksoftwares.domain.model.exception.MalformedFieldException;
 import tn.ksoftwares.domain.model.exception.UserIdAlreadyUsedException;
 import tn.ksoftwares.domain.model.exception.UserNameAlreadyUsedException;
 import tn.ksoftwares.domain.model.pojo.User;
-import tn.ksoftwares.domain.ports.api.UserService;
+import tn.ksoftwares.domain.logic.ports.api.UserService;
 import tn.ksoftwares.rest.controller.apdater.UserController;
 
 @RestController

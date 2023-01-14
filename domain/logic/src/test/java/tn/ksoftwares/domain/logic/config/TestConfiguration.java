@@ -1,4 +1,4 @@
-package tn.ksoftwares.domain.config;
+package tn.ksoftwares.domain.logic.config;
 
 import javax.validation.Validator;
 
@@ -13,14 +13,14 @@ import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.context.annotation.Scope;
 import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
 
-import tn.ksoftwares.domain.ports.api.PasswordEncoder;
-import tn.ksoftwares.domain.ports.api.UserService;
-import tn.ksoftwares.domain.ports.spi.UserPersistence;
-import tn.ksoftwares.domain.service.UserServiceImpl;
+import tn.ksoftwares.domain.logic.ports.api.PasswordEncoder;
+import tn.ksoftwares.domain.logic.ports.api.UserService;
+import tn.ksoftwares.domain.logic.ports.spi.UserPersistence;
+import tn.ksoftwares.domain.logic.service.UserServiceImpl;
 
 @Configuration
 @EnableAspectJAutoProxy
-@ComponentScan(basePackages = "tn.ksoftwares.domain.advice")
+@ComponentScan(basePackages = "tn.ksoftwares.domain.logic.advice")
 public class TestConfiguration {
     
     @Bean
