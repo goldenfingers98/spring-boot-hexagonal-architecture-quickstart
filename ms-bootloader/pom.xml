@@ -6,7 +6,7 @@
 
     <parent>
         <artifactId>auth-service</artifactId>
-        <groupId>tn.ksoftwares</groupId>
+        <groupId>tn.ksoftwares.auth</groupId>
         <version>1.0-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
@@ -15,17 +15,17 @@
 
     <dependencies>
         <dependency>
-            <groupId>tn.ksoftwares</groupId>
+            <groupId>tn.ksoftwares.auth</groupId>
             <artifactId>persistence-postgresql</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
         <dependency>
-            <groupId>tn.ksoftwares</groupId>
+            <groupId>tn.ksoftwares.auth</groupId>
             <artifactId>rest</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
         <dependency>
-            <groupId>tn.ksoftwares</groupId>
+            <groupId>tn.ksoftwares.auth</groupId>
             <artifactId>logic</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
