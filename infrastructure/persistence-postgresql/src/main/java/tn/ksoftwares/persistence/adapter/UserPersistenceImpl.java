@@ -12,7 +12,7 @@ import tn.ksoftwares.domain.model.exception.EmailAlreadyUsedException;
 import tn.ksoftwares.domain.model.exception.UserNameAlreadyUsedException;
 import tn.ksoftwares.domain.model.pojo.User;
 import tn.ksoftwares.domain.model.utils.Username;
-import tn.ksoftwares.domain.ports.spi.UserPersistence;
+import tn.ksoftwares.domain.logic.ports.spi.UserPersistence;
 import tn.ksoftwares.persistence.entity.UserEntity;
 import tn.ksoftwares.persistence.entity.constraint.UserConstraint;
 import tn.ksoftwares.persistence.mapper.UserMapper;

@@ -9,10 +9,10 @@ import org.springframework.context.annotation.Scope;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import tn.ksoftwares.domain.ports.api.PasswordEncoder;
-import tn.ksoftwares.domain.ports.api.UserService;
-import tn.ksoftwares.domain.ports.spi.UserPersistence;
-import tn.ksoftwares.domain.service.UserServiceImpl;
+import tn.ksoftwares.domain.logic.ports.api.PasswordEncoder;
+import tn.ksoftwares.domain.logic.ports.api.UserService;
+import tn.ksoftwares.domain.logic.ports.spi.UserPersistence;
+import tn.ksoftwares.domain.logic.service.UserServiceImpl;
 import tn.ksoftwares.persistence.adapter.UserPersistenceImpl;
 import tn.ksoftwares.persistence.mapper.UserMapper;
 import tn.ksoftwares.persistence.mapper.impl.UserMapperImpl;

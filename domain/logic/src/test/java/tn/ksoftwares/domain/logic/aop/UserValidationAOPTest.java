@@ -1,4 +1,4 @@
-package tn.ksoftwares.domain.aop;
+package tn.ksoftwares.domain.logic.aop;
 
 import static org.junit.Assert.assertThrows;
 
@@ -12,8 +12,8 @@ import org.springframework.aop.aspectj.annotation.AspectJProxyFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import tn.ksoftwares.domain.advice.UserValidationAOP;
-import tn.ksoftwares.domain.config.TestConfiguration;
+import tn.ksoftwares.domain.logic.advice.UserValidationAOP;
+import tn.ksoftwares.domain.logic.config.TestConfiguration;
 import tn.ksoftwares.domain.model.exception.DomainConstraintViolationException;
 import tn.ksoftwares.domain.model.exception.MalformedFieldException;
 import tn.ksoftwares.domain.model.pojo.User;
@@ -21,7 +21,7 @@ import tn.ksoftwares.domain.model.utils.Email;
 import tn.ksoftwares.domain.model.utils.Name;
 import tn.ksoftwares.domain.model.utils.Password;
 import tn.ksoftwares.domain.model.utils.Username;
-import tn.ksoftwares.domain.ports.api.UserService;
+import tn.ksoftwares.domain.logic.ports.api.UserService;
 
 @RunWith(MockitoJUnitRunner.class)
 @SpringBootTest(classes = TestConfiguration.class)

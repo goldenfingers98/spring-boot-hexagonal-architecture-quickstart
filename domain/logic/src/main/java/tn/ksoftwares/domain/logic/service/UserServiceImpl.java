@@ -1,4 +1,4 @@
-package tn.ksoftwares.domain.service;
+package tn.ksoftwares.domain.logic.service;
 
 import java.util.UUID;
 
@@ -12,8 +12,8 @@ import tn.ksoftwares.domain.model.exception.MalformedFieldException;
 import tn.ksoftwares.domain.model.exception.UserNameAlreadyUsedException;
 import tn.ksoftwares.domain.model.pojo.User;
 import tn.ksoftwares.domain.model.utils.Username;
-import tn.ksoftwares.domain.ports.api.UserService;
-import tn.ksoftwares.domain.ports.spi.UserPersistence;
+import tn.ksoftwares.domain.logic.ports.api.UserService;
+import tn.ksoftwares.domain.logic.ports.spi.UserPersistence;
 
 public class UserServiceImpl implements UserService {
 

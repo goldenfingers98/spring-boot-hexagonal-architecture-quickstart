@@ -1,4 +1,4 @@
-package tn.ksoftwares.domain.ports.spi;
+package tn.ksoftwares.domain.logic.ports.spi;
 
 import java.util.UUID;
 

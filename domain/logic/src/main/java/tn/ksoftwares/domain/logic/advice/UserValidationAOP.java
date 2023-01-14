@@ -1,4 +1,4 @@
-package tn.ksoftwares.domain.advice;
+package tn.ksoftwares.domain.logic.advice;
 
 import java.lang.reflect.Field;
 import java.util.Set;
@@ -18,7 +18,7 @@ import tn.ksoftwares.domain.model.exception.DomainConstraintViolationException;
 import tn.ksoftwares.domain.model.exception.MalformedFieldException;
 import tn.ksoftwares.domain.model.pojo.User;
 import tn.ksoftwares.domain.model.utils.Password;
-import tn.ksoftwares.domain.ports.api.PasswordEncoder;
+import tn.ksoftwares.domain.logic.ports.api.PasswordEncoder;
 
 @Aspect
 @Component
@@ -35,7 +35,7 @@ public class UserValidationAOP {
     private PasswordEncoder passwordEncoder;
     
 
-    @Around("execution(* tn.ksoftwares.domain.service.UserServiceImpl.addUser(..)) && args(tn.ksoftwares.domain.model.pojo.User))")
+    @Around("execution(* tn.ksoftwares.domain.logic.service.UserServiceImpl.addUser(..)) && args(tn.ksoftwares.domain.model.pojo.User))")
     public void doValidateUserThenEncodePassword(final ProceedingJoinPoint pjp) throws Throwable {
         // get the user arg
         User user = pjp.getArgs()[0] instanceof User ? (User) pjp.getArgs()[0] : new User();
