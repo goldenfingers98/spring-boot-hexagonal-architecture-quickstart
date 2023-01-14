@@ -39,7 +39,7 @@ public class UserPersistenceImpl implements UserPersistence {
                 switch (constraint) {
                     case UNIQUE_EMAIL:
                         throw new EmailAlreadyUsedException();
-                    case UNIQUE_USENAME:
+                    case UNIQUE_USERNAME:
                         throw new UserNameAlreadyUsedException();
                     case USERS_PKEY:
                         throw new UserIdAlreadyUsedException();
