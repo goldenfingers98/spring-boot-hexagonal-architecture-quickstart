@@ -17,6 +17,7 @@ services:
       - SPRING_DATASOURCE_USERNAME=user
       - SPRING_DATASOURCE_PASSWORD=user
       - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+      - LOGGING_LEVEL_TN_KSOFTWARES_AUTH_REST_CONTROLLER_IMPLEMENTATION=DEBUG
 
   postgresqldb:
     image: 'postgres:13.1-alpine'
