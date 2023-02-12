@@ -1,4 +1,4 @@
-version: '3.1'
+version: '3.4'
 
 services:
   app:
@@ -17,6 +17,13 @@ services:
       - SPRING_DATASOURCE_USERNAME=user
       - SPRING_DATASOURCE_PASSWORD=user
       - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+      - LOGGING_LEVEL_TN_KSOFTWARES_AUTH_REST_CONTROLLER_IMPLEMENTATION=DEBUG
+    healthcheck:
+      test: wget http://auth-service:8080/api/users/ || exit 1
+      interval: 10s
+      timeout: 10s
+      retries: 5
+      start_period: 30s
 
   postgresqldb:
     image: 'postgres:13.1-alpine'
@@ -27,3 +34,9 @@ services:
       - POSTGRES_PASSWORD=user
     ports:
       - 5432:5432
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready", "-d", "db_prod"]
+      interval: 30s
+      timeout: 60s
+      retries: 5
+      start_period: 10s  
