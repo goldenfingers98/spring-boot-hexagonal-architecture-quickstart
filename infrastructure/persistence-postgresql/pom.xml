@@ -32,6 +32,12 @@
             <version>1.18.24</version>
         </dependency>
 
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <scope>test</scope>
+        </dependency>
+
     </dependencies>
     <properties>
         <maven.compiler.source>11</maven.compiler.source>

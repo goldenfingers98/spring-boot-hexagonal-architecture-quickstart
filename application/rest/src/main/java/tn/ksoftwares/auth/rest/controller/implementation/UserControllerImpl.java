@@ -11,7 +11,6 @@ import org.springframework.web.server.ResponseStatusException;
 import tn.ksoftwares.auth.domain.model.exception.DomainConstraintViolationException;
 import tn.ksoftwares.auth.domain.model.exception.EmailAlreadyUsedException;
 import tn.ksoftwares.auth.domain.model.exception.MalformedFieldException;
-import tn.ksoftwares.auth.domain.model.exception.UserIdAlreadyUsedException;
 import tn.ksoftwares.auth.domain.model.exception.UserNameAlreadyUsedException;
 import tn.ksoftwares.auth.domain.model.pojo.User;
 import tn.ksoftwares.auth.rest.controller.apdater.UserController;
@@ -30,8 +29,8 @@ public class UserControllerImpl implements UserController {
     @Override
     public ResponseEntity<Void> addUser(User user) {
         try {
-            userService.addUser(user);
-        } catch (DomainConstraintViolationException | MalformedFieldException | UserIdAlreadyUsedException e) {
+            userService.saveUser(user);
+        } catch (DomainConstraintViolationException | MalformedFieldException e) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, e.getMessage());
         } catch (EmailAlreadyUsedException | UserNameAlreadyUsedException e) {
             throw new ResponseStatusException(HttpStatus.CONFLICT, e.getMessage());

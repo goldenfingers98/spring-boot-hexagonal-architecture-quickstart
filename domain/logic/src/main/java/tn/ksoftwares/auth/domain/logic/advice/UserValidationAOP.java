@@ -35,7 +35,7 @@ public class UserValidationAOP {
     private PasswordEncoder passwordEncoder;
     
 
-    @Around("execution(* tn.ksoftwares.auth.domain.logic.service.UserServiceImpl.addUser(..)) && args(tn.ksoftwares.auth.domain.model.pojo.User))")
+    @Around("execution(* tn.ksoftwares.auth.domain.logic.service.UserServiceImpl.saveUser(..)) && args(tn.ksoftwares.auth.domain.model.pojo.User))")
     public void doValidateUserThenEncodePassword(final ProceedingJoinPoint pjp) throws Throwable {
         // get the user arg
         User user = pjp.getArgs()[0] instanceof User ? (User) pjp.getArgs()[0] : new User();
