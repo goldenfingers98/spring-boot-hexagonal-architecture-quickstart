@@ -1,6 +1,7 @@
 package tn.ksoftwares.auth.persistence.mapper;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 
 import java.util.UUID;
 
@@ -9,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ContextConfiguration;
 
+import nl.jqno.equalsverifier.EqualsVerifier;
 import tn.ksoftwares.auth.persistence.entity.UserEntity;
 import tn.ksoftwares.auth.domain.model.pojo.User;
 import tn.ksoftwares.auth.domain.model.utils.Email;
@@ -25,12 +27,12 @@ class UserMapperTest {
     private UserMapper userMapper;
 
     @Test
-    void whenUserDtoProvided_thenMapToUserEntity() {
+    void testToEntity() {
         // when
         User user = new User(
                 UUID.randomUUID(),
                 new Name("Khaldoun"),
-                null,
+                new Name("middlename"),
                 new Name("CHTOUROU"),
                 new Email("tchtourou21@gmail.com"),
                 new Username("goldenfingers98"),
@@ -39,23 +41,23 @@ class UserMapperTest {
         UserEntity expectedUserEntity = new UserEntity(
                 user.getId(),
                 "Khaldoun",
-                null,
+                "middlename",
                 "CHTOUROU",
                 "tchtourou21@gmail.com",
                 "goldenfingers98",
                 "Qwerty*123");
         // then
         UserEntity actualUserEntity = userMapper.toEntity(user);
-        assertEquals(actualUserEntity, expectedUserEntity);
+        assertEquals("Mapped entity should be equal to the expected one.", actualUserEntity, expectedUserEntity);
     }
 
     @Test
-    void whenUserEntityProvided_tenMapToUserDto() {
+    void testToDto() {
         // when
         UserEntity userEntity = new UserEntity(
                 UUID.randomUUID(),
                 "Khaldoun",
-                null,
+                "middlename",
                 "CHTOUROU",
                 "tchtourou21@gmail.com",
                 "goldenfingers98",
@@ -64,13 +66,25 @@ class UserMapperTest {
         User expectedUser = new User(
                 userEntity.getId(),
                 new Name("Khaldoun"),
-                null,
+                new Name("middlename"),
                 new Name("CHTOUROU"),
                 new Email("tchtourou21@gmail.com"),
                 new Username("goldenfingers98"),
                 new Password("Qwerty*123"));
         // then
         User actualUser = userMapper.toDto(userEntity);
-        assertEquals(expectedUser, actualUser);
+        assertEquals("Mapped dto should be equal to the expected one", expectedUser, actualUser);
     }
+
+    @Test
+    void testNullMapping() {
+        assertNull("Null mapping should return a null object.", userMapper.toDto(null));
+        assertNull("Null mapping should return a null object.", userMapper.toEntity(null));
+    }
+
+    @Test
+    void testEqualsHashCodeContract() {
+        EqualsVerifier.forClass(UserEntity.class).verify();
+    }
+
 }

@@ -21,7 +21,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@EqualsAndHashCode
+@EqualsAndHashCode(exclude = "id")
 @Table(name = "users", uniqueConstraints = { @UniqueConstraint(columnNames = "u_email", name = "UNIQUE_EMAIL"),
         @UniqueConstraint(columnNames = "u_username", name = "UNIQUE_USERNAME") })
 @Entity

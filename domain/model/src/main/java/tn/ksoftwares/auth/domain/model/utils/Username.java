@@ -17,9 +17,11 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode
-public class Username implements Serializable{
-    
-    @Pattern(regexp = "^(?=[a-zA-Z0-9._]{5,20}$)(?!.*[_.]{2})[^_.].*[^_.]$")
+public class Username implements Serializable {
+
+    private static final String MESSAGE = "Username must contain at least one uppercase, one lowecase, one number and one special character.";
+
+    @Pattern(regexp = "^(?=[a-zA-Z0-9._]{5,20}$)(?!.*[_.]{2})[^_.].*[^_.]$", message = MESSAGE)
     @JsonValue
     private String data;
 
