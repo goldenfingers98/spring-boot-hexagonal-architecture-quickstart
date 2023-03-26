@@ -33,9 +33,9 @@ public class UserPersistenceImpl implements UserPersistence {
                 String constaintName = ((ConstraintViolationException) e.getCause()).getConstraintName();
                 UserConstraint constraint = UserConstraint.getConstraintByName(constaintName.toUpperCase());
                 if (constraint == UserConstraint.UNIQUE_EMAIL) {
-                        throw new EmailAlreadyUsedException();
-                    } else if (constraint == UserConstraint.UNIQUE_USERNAME) {
-                        throw new UserNameAlreadyUsedException();
+                    throw new EmailAlreadyUsedException();
+                } else if (constraint == UserConstraint.UNIQUE_USERNAME) {
+                    throw new UserNameAlreadyUsedException();
                 }
             }
             throw e;

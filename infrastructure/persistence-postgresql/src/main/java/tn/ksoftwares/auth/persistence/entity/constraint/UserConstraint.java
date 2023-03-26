@@ -5,7 +5,7 @@ public enum UserConstraint {
     UNIQUE_USERNAME;
 
     public static UserConstraint getConstraintByName(String message) {
-        for(UserConstraint it: UserConstraint.values()) {
+        for (UserConstraint it : UserConstraint.values()) {
             if (message.contains(it.name())) {
                 return it;
             }
