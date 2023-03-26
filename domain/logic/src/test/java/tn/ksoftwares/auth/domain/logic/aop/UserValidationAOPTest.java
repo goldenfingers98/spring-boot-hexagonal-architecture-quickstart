@@ -1,5 +1,6 @@
 package tn.ksoftwares.auth.domain.logic.aop;
 
+import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertThrows;
 
 import java.util.UUID;
@@ -16,7 +17,9 @@ import tn.ksoftwares.auth.domain.logic.advice.UserValidationAOP;
 import tn.ksoftwares.auth.domain.logic.config.TestConfiguration;
 import tn.ksoftwares.auth.domain.logic.ports.api.UserService;
 import tn.ksoftwares.auth.domain.model.exception.DomainConstraintViolationException;
+import tn.ksoftwares.auth.domain.model.exception.EmailAlreadyUsedException;
 import tn.ksoftwares.auth.domain.model.exception.MalformedFieldException;
+import tn.ksoftwares.auth.domain.model.exception.UserNameAlreadyUsedException;
 import tn.ksoftwares.auth.domain.model.pojo.User;
 import tn.ksoftwares.auth.domain.model.utils.Email;
 import tn.ksoftwares.auth.domain.model.utils.Name;
@@ -25,7 +28,7 @@ import tn.ksoftwares.auth.domain.model.utils.Username;
 
 @RunWith(MockitoJUnitRunner.class)
 @SpringBootTest(classes = TestConfiguration.class)
-public class UserValidationAOPTest {
+class UserValidationAOPTest {
 
     @Autowired
     private UserService userService;
@@ -33,7 +36,7 @@ public class UserValidationAOPTest {
     private UserService userServiceProxy;
 
     @BeforeEach
-    public void init() {
+    void init() {
         // init the aspect factory
         AspectJProxyFactory aopFactory = new AspectJProxyFactory(userService);
         UserValidationAOP aspect = new UserValidationAOP();
@@ -42,7 +45,26 @@ public class UserValidationAOPTest {
     }
 
     @Test
-    public void testDoValidateUserThenEncodePassword_nullAttribute() {
+    void testDoValidateUser() throws EmailAlreadyUsedException, UserNameAlreadyUsedException,
+            DomainConstraintViolationException, MalformedFieldException {
+        // when
+        User user = new User(
+                UUID.randomUUID(),
+                new Name("Khaldoun"),
+                null,
+                new Name("Chtourou"),
+                new Email("tchtourou21@gmail.com"),
+                new Username("goldenfingers98"),
+                new Password("Qwerty*123"));
+        // then
+        Password passwordBeforeHashing = user.getPassword();
+        userServiceProxy.saveUser(user);
+        // test should succeed if the validation succeeded
+        assertNotEquals("Password should be encoded.", user.getPassword(), passwordBeforeHashing);
+    }
+
+    @Test
+    void testDoValidateUserThenEncodePasswordNullAttribute() {
         // when
         User user = new User(
                 UUID.randomUUID(),
@@ -54,13 +76,14 @@ public class UserValidationAOPTest {
                 new Password("Qwerty*123"));
 
         // then
-        assertThrows(DomainConstraintViolationException.class, () -> {
-            userServiceProxy.addUser(user);
-        });
+        assertThrows(String.format("Test should throw a %s.", DomainConstraintViolationException.class),
+                DomainConstraintViolationException.class, () -> {
+                    userServiceProxy.saveUser(user);
+                });
     }
 
     @Test
-    public void testDoValidateUserThenEncodePassword_InvalidName() {
+    void testDoValidateUserThenEncodePasswordInvalidName() {
         // when
         User user = new User(
                 UUID.randomUUID(),
@@ -71,8 +94,9 @@ public class UserValidationAOPTest {
                 new Username("goldenfingers98"),
                 new Password("Qwerty*123"));
         // then
-        assertThrows(MalformedFieldException.class, () -> {
-            userServiceProxy.addUser(user);
-        });
+        assertThrows(String.format("Test should throw a %s.", MalformedFieldException.class),
+                MalformedFieldException.class, () -> {
+                    userServiceProxy.saveUser(user);
+                });
     }
 }

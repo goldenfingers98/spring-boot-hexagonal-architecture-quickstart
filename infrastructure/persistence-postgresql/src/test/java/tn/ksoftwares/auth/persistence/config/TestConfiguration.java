@@ -13,4 +13,5 @@ public class TestConfiguration {
     public UserMapper getUserMapper() {
         return new UserMapperImpl();
     }
+    
 }
